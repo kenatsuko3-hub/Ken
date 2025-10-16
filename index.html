@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Voltage Login</title>
+  <title>Bug Nebula</title>
 
-  <!-- Font Google -->
   <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=Nosifer&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
-      background: black url('/assets/nebula-merah.jpg') center center/cover no-repeat;
+      background: black url('https://files.cloudkuimages.guru/images/0zRVNmL5.jpg') center center/cover no-repeat;
       color: #cc00ff;
       font-family: 'UnifrakturCook', cursive;
       min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
-      position: relative;
     }
-
     .card {
       background: rgba(128, 0, 0, 0.04);
       border: 1px solid rgba(255, 0, 0, 0.2);
@@ -34,7 +27,102 @@
       border-radius: 20px;
       width: 100%;
       max-width: 400px;
-      z-index: 2;
+      text-align: center;
+      box-shadow: 0 0 25px rgba(255, 0, 0, 0.45);
+      animation: fadeIn 1s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .icon { font-size: 36px; color: #ff0000; margin-bottom: 12px; }
+    .logo {
+      width: 90px; height: 90px; margin: 0 auto 14px; display: block;
+      border-radius: 50%; box-shadow: 0 0 20px rgba(255, 0, 0, 0.9);
+      object-fit: cover;
+    }
+    .title {
+      font-size: 34px; font-family: 'Nosifer', cursive;
+      color: #ff0000; text-shadow: 0 0 10px #ff0000; margin-bottom: 10px;
+    }
+    .subtitle { font-size: 13px; color: #ff6666; margin-bottom: 26px; font-family: 'Poppins', sans-serif; }
+    .form-group { position: relative; margin-bottom: 18px; }
+    .form-group i {
+      position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+      color: #ff6666;
+    }
+    input {
+      width: 100%; padding: 14px 14px 14px 40px;
+      border-radius: 10px; border: none; background: #1a0000;
+      color: #ff6666; font-size: 14px;
+    }
+    input:focus { box-shadow: 0 0 12px rgba(255,0,0,0.6); border: 1px solid #ff0000; color: #ff0000; }
+    button {
+      width: 100%; padding: 14px; font-size: 15px;
+      background: linear-gradient(135deg, #660000, #330000);
+      color: #fff; font-weight: 600; border: none; border-radius: 10px; cursor: pointer;
+    }
+    button:hover { transform: translateY(-2px) scale(1.02); box-shadow: 0 0 18px rgba(255,0,0,0.6); }
+    .buy-access {
+      margin-top: 18px; display: inline-block; font-size: 13px;
+      background: #990000; padding: 10px 20px; color: white;
+      border-radius: 8px; text-decoration: none;
+    }
+    .toast {
+      position: absolute; bottom: 60px; left: 50%; transform: translateX(-50%);
+      background: #990000; color: white; padding: 12px 20px;
+      border-radius: 8px; font-size: 13px; box-shadow: 0 0 14px rgba(255,0,0,0.5);
+      opacity: 0; animation: fadeInOut 3.8s ease forwards;
+    }
+    @keyframes fadeInOut {
+      0% { opacity: 0; transform: translate(-50%, 20px); }
+      10% { opacity: 1; transform: translate(-50%, 0); }
+      90% { opacity: 1; }
+      100% { opacity: 0; transform: translate(-50%, 20px); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <img src="https://files.cloudkuimages.guru/images/0zRVNmL5.jpg" alt="Logo" class="logo" />
+    <div class="icon"><i class="fas fa-skull-crossbones"></i></div>
+    <div class="title">BUG NEBULA</div>
+    <div class="subtitle">Creator By @dilxzcode</div>
+
+    <form method="POST" action="/api/auth">
+      <div class="form-group">
+        <i class="fas fa-user"></i>
+        <input type="text" name="username" placeholder="Username" required />
+      </div>
+      <div class="form-group">
+        <i class="fas fa-key"></i>
+        <input type="text" name="key" placeholder="Password" required />
+      </div>
+      <button type="submit">
+        <i class="fas fa-skull-crossbones" style="margin-right: 8px;"></i>
+        — LOGIN —
+        <i class="fas fa-skull-crossbones" style="margin-left: 8px;"></i>
+      </button>
+    </form>
+
+    <a class="buy-access" href="https://t.me/dilxzcode" target="_blank">
+      <i class="fas fa-coins"></i> Creator Apps
+    </a>
+  </div>
+
+  <div id="toast" class="toast" style="display:none;"></div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const msg = params.get("msg");
+    if (msg) {
+      const toast = document.getElementById("toast");
+      toast.textContent = msg;
+      toast.style.display = "block";
+    }
+  </script>
+</body>
+</html>      z-index: 2;
       text-align: center;
       box-shadow: 0 0 25px rgba(255, 0, 0, 0.45);
       animation: fadeIn 1s ease;
